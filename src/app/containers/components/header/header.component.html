@@ -1,0 +1,15 @@
+<div class="container">
+	<a class="profile-container" href="https://www.linkedin.com/in/marcos-wergles/" target="_blank">
+		<img class="profile-container--logo" src="assets/img/logo.png" alt="Logo Pokedex" />
+		<p class="profile-container--name">Pokedex</p>
+	</a>
+	<nav>
+		<ul class="menu">
+			<li [class.focused]="inicio" (click)="clickToGo('')">Pokemons</li>
+			<li [class.focused]="sobreMim" (click)="clickToGo('sobre-mim')">Berrys</li>
+			<li [class.focused]="carreira" (click)="clickToGo('carreira')">Locates</li>
+			<li [class.focused]="portifolio" (click)="clickToGo('portifolio')">Games</li>
+			<li [class.focused]="contato" (click)="clickToGo('contato')">History</li>
+		</ul>
+	</nav>
+</div>

@@ -1,0 +1,19 @@
+<div class="root">
+  <app-header [selected]="'inicio'"></app-header>
+  <div class="container">
+    <div class="content">
+      <div class="pokemon" *ngFor="let pokemon of pokemons">
+        <p class="pokemon-name">{{pokemon.name}}</p>
+        <a [href]="pokemon.url">
+          <img class="pokemon-img" [src]="pokemon.sprite" [alt]="pokemon.name" >
+        </a>
+        <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span> <span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>
+        <div class="types">
+          <p class="type" *ngFor="let type of pokemon.types">{{type.type.name}}</p>
+        </div>
+      </div>
+    </div>
+    <button class="newPokemons" (click)="getPokemons(nextUrl)">Mais Pokemons</button>
+  </div>
+  <app-footer></app-footer>
+</div>
