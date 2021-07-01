@@ -2,7 +2,7 @@
   <app-header [selected]="'inicio'"></app-header>
   <div class="container">
     <div class="content">
-      <div class="pokemon" *ngFor="let pokemon of pokemons">
+      <div class="pokemon type--{{pokemon.types[0].type.name}}" *ngFor="let pokemon of pokemons">
         <p class="pokemon-name">{{pokemon.name}}</p>
         <a [href]="pokemon.url">
           <img class="pokemon-img" [src]="pokemon.sprite" [alt]="pokemon.name" >
