@@ -36,6 +36,7 @@
   &:hover{
     .pokemon-img{
       filter: brightness(0.75);
+      transform: scale(1.2);
     }
   }
 }
@@ -67,6 +68,7 @@
   height: 11rem;
   width: 11rem;
   transition: filter 0.3s;
+  transition: transform 0.3s;
 }
 
 .pokemon-id {
@@ -74,12 +76,11 @@
   padding: 0.1rem 2rem;
   color: $black;
   font-weight: $font-semi-bold;
-  background-color: aliceblue;
+  background-color: #FFFFFF;
   border-radius: 10px;
   font-size: 1.1rem;
   text-shadow: 1px 1px 10px black;
   box-shadow: 2px 2px #000000;
-
 }
 
 .types {
@@ -92,26 +93,10 @@
   padding: 0.1rem 0.8rem;
   margin: 0 0.5rem;
   border-radius: 10px;
-  background-color: #6c64e0;
+  background-color: $black;
   font-weight: $font-regular;
-}
-
-.newPokemons {
-  margin-top: 1rem;
-  text-align: center;
-  cursor: pointer;
-  padding: 2rem;
-  background-color: #6c64e0;
-  width: 15%;
-  border: none;
-  border-radius: 10px;
+  text-shadow: 1px 1px 10px #fff;
   box-shadow: 2px 2px #000000;
-  font-size: 1.5rem;
-  transition: filter 0.3s;
-
-  &:hover {
-    filter: brightness(0.75);
-  }
 }
 
 .type {
@@ -169,5 +154,40 @@
   &--steel {
     background-color: #656565;
   }
+  &--blank {
+    background-color: #000000;
+  }
+}
+
+.loading {
+  margin: 2rem 0;
+}
+
+.newPokemons {
+  margin-top: 1rem;
+  text-align: center;
+  cursor: pointer;
+  padding: 2rem;
+  background-color: #6c64e0;
+  width: 15%;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px #000000;
+  font-size: 1.5rem;
+  transition: filter 0.3s;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    filter: brightness(0.75);
+    .newPokemons-icon {
+      transform: rotate(270deg) scale(3);
+    }
+  }
+}
+
+.newPokemons-icon{
+  transform: rotate(270deg) scale(2);
+  transition: transform 0.3s;
 }
 

@@ -12,22 +12,7 @@ export class HomeComponent implements OnInit {
   public pokemon: string = '';
   public pokemonSvg: string = '';
   public nextUrl: string = 'https://pokeapi.co/api/v2/pokemon/?offset=0%26limit=50';
-  public colors = {
-    fire: '#FDDFDF',
-    grass: '#DEFDE0',
-    electric: '#FCF7DE',
-    water: '#DEF3FD',
-    ground: '#f4e7da',
-    rock: '#d5d5d4',
-    fairy: '#fceaff',
-    poison: '#98d7a5',
-    bug: '#f8d5a3',
-    dragon: '#97b3e6',
-    psychic: '#eaeda1',
-    flying: '#F5F5F5',
-    fighting: '#E6E0D4',
-    normal: '#F5F5F5'
-  };
+  public isLoading: boolean = false;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -36,11 +21,28 @@ export class HomeComponent implements OnInit {
   }
 
   getPokemons(url: string) {
-    this.pokemonService.getPokemons(url).subscribe((pokemons: Pokemons) => {
+    this.isLoading = true;
+    this.pokemonService.getPokemons(url).subscribe( async (pokemons: Pokemons) => {
       const nextLoadPokemons = this.pokemons.concat(pokemons.completePokemons);
       this.pokemons = nextLoadPokemons;
       this.nextUrl = pokemons.next_url.replace('&', '%26');
+      this.getBlankTypes();
+      this.isLoading = false;
     });
+  }
+
+  getBlankTypes(){
+    this.pokemons.map(pokemon => {
+      if(pokemon.types.length === 1) {
+        pokemon.types[1] = {
+          slot: 0,
+          type: {
+            name: 'blank',
+            url: '',
+          }
+        }
+      }
+    })
   }
 
   getPokemonById(id: number){

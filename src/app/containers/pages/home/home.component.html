@@ -7,13 +7,16 @@
         <a class="pokemon-bg" [href]="pokemon.url">
           <img class="pokemon-img" [src]="pokemon.sprite" [alt]="pokemon.name" >
         </a>
-        <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span> <span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>
+        <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span><span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>
         <div class="types">
-          <p class="type" *ngFor="let type of pokemon.types">{{type.type.name}}</p>
+          <div *ngFor="let type of pokemon.types; let index = index">
+            <p class="type type--{{pokemon.types[1].type.name}}" *ngIf="pokemon.types[index].type.name !== 'blank'">{{type.type.name}}</p>
+          </div>
         </div>
       </div>
     </div>
-    <button class="newPokemons" (click)="getPokemons(nextUrl)">Mais Pokemons</button>
+    <app-loading class="loading" *ngIf="isLoading"></app-loading>
+    <button class="newPokemons" *ngIf="!isLoading" (click)="getPokemons(nextUrl)"><mat-icon class="newPokemons-icon" >arrow_back_ios</mat-icon></button>
   </div>
   <app-footer></app-footer>
 </div>
