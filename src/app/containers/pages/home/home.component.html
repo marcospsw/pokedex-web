@@ -4,7 +4,7 @@
     <div class="content">
       <div class="pokemon type--{{pokemon.types[0].type.name}}" *ngFor="let pokemon of pokemons">
         <p class="pokemon-name">{{pokemon.name}}</p>
-        <a [href]="pokemon.url">
+        <a class="pokemon-bg" [href]="pokemon.url">
           <img class="pokemon-img" [src]="pokemon.sprite" [alt]="pokemon.name" >
         </a>
         <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span> <span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>

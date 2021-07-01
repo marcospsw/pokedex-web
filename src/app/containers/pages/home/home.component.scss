@@ -32,10 +32,11 @@
   padding: 1rem;
   width: 13.5rem;
   box-shadow: 2px 2px #000000;
-  transition: filter 0.3s;
 
-  &:hover {
-    filter: brightness(0.75);
+  &:hover{
+    .pokemon-img{
+      filter: brightness(0.75);
+    }
   }
 }
 
@@ -48,11 +49,24 @@
   padding: 0.1rem 2rem;
   border-radius: 10px;
   font-weight: $font-semi-bold;
+  text-shadow: 1px 1px 10px black;
+  box-shadow: 2px 2px #000000;
+}
+
+.pokemon-bg {
+  background-color: #ffffff;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  box-shadow: 2px 2px #000000;
+  display: flex;
+  justify-content: center;
 }
 
 .pokemon-img {
   height: 11rem;
   width: 11rem;
+  transition: filter 0.3s;
 }
 
 .pokemon-id {
@@ -60,7 +74,12 @@
   padding: 0.1rem 2rem;
   color: $black;
   font-weight: $font-semi-bold;
+  background-color: aliceblue;
+  border-radius: 10px;
   font-size: 1.1rem;
+  text-shadow: 1px 1px 10px black;
+  box-shadow: 2px 2px #000000;
+
 }
 
 .types {
