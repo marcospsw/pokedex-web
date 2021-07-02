@@ -2,15 +2,14 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
-import { Pokemon, Pokemons, UniquePokemon } from '../models/pokemon';
+import { Pokemons, UniquePokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
-  public pokemons = 'http://localhost:4000/pokemons';
-
   constructor(private httpClient: HttpClient) {}
 
   public httpOptions = {
@@ -19,7 +18,7 @@ export class PokemonService {
 
   // Obtem todos os pokemons
   getPokemons(url: string): Observable<Pokemons> {
-    return this.httpClient.get<Pokemons>('http://localhost:4000/pokemons?url=' + url)
+    return this.httpClient.get<Pokemons>(environment.URL_SERVER + 'pokemons?url=' + url)
       .pipe(
         retry(2),
         catchError(this.handleError))
@@ -27,7 +26,7 @@ export class PokemonService {
 
   //Obtem um pokemon pelo id
   getPokemonById(id: number): Observable<UniquePokemon> {
-    return this.httpClient.get<UniquePokemon>('http://localhost:4000/pokemons/id?pokemon=' + id)
+    return this.httpClient.get<UniquePokemon>(environment.URL_SERVER + 'pokemons/id?pokemon=' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
