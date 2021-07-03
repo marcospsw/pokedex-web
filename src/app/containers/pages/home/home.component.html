@@ -1,6 +1,12 @@
 <div class="root">
   <app-header [selected]="'inicio'"></app-header>
   <div class="container">
+    <div class="chip-container">
+      <mat-chip class="chip-types type--{{type}}" *ngFor="let type of types" (click)="getPokemonsByType(type)">{{type}}</mat-chip>
+      <mat-chip class="chip-types chip-types--blank type--blank" (click)="getReset()">Resetar Filtro</mat-chip>
+
+    </div>
+    <app-loading class="loading" *ngIf="isLoading && isFilteredByType === true"></app-loading>
     <div class="content">
       <div class="pokemon type--{{pokemon.types[0].type.name}}" *ngFor="let pokemon of pokemons">
         <p class="pokemon-name">{{pokemon.name}}</p>
@@ -15,8 +21,15 @@
         </div>
       </div>
     </div>
-    <app-loading class="loading" *ngIf="isLoading"></app-loading>
-    <button class="newPokemons" *ngIf="!isLoading" (click)="getPokemons(nextUrl)"><mat-icon class="newPokemons-icon" >arrow_back_ios</mat-icon></button>
+    <app-loading class="loading" *ngIf="isLoading && isFilteredByType === false"></app-loading>
   </div>
   <app-footer></app-footer>
 </div>
+
+<div
+  *ngIf="!isLoading && nextUrl && isFilteredByType === false"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="getPokemons(nextUrl)"
+></div>

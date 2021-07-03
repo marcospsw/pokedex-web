@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-import { Pokemons, UniquePokemon } from '../models/pokemon';
+import { Pokemon, Pokemons, UniquePokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,15 @@ export class PokemonService {
         catchError(this.handleError)
       )
   }
+
+  getPokemonsByType(type: string): Observable<Pokemon[]> {
+    return this.httpClient.get<Pokemon[]>(environment.URL_SERVER + 'pokemons/complete?type=' + type)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';

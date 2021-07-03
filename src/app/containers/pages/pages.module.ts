@@ -5,8 +5,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ComponentsModule } from '../components/components.module';
 import { AppComponent } from './app/app.component';
 import { MatIconModule } from '@angular/material/icon';
-
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
     ComponentsModule,
     AppRoutingModule,
     MatIconModule,
+    InfiniteScrollModule,
+    MatChipsModule,
   ],
   exports: []
 })
