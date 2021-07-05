@@ -33,9 +33,10 @@ export class HomeComponent implements OnInit {
     'flying',
     'steel',
   ]
-  public isFilteredByType: boolean = false;
+  public isFiltered: boolean = false;
+  public timer: NodeJS.Timeout = setTimeout(() => {}, 0);
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
     this.getPokemons(this.nextUrl);
@@ -45,42 +46,40 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.pokemonService.getPokemons(url).subscribe( async (pokemons: Pokemons) => {
       const nextLoadPokemons = this.pokemons.concat(pokemons.completePokemons);
-      this.pokemons = nextLoadPokemons.filter(Boolean);
+      this.pokemons = nextLoadPokemons;
       pokemons.next_url ? this.nextUrl = pokemons.next_url.replace('&', '%26') : this.nextUrl = pokemons.next_url;
-      this.getBlankTypes();
       this.isLoading = false;
     });
-  }
-
-  getBlankTypes(){
-    this.pokemons.map(pokemon => {
-      if(pokemon.types.length === 1) {
-        pokemon.types[1] = {
-          slot: 0,
-          type: {
-            name: 'blank',
-            url: '',
-          }
-        }
-      }
-    })
   }
 
   getPokemonsByType(type: string){
-    this.isFilteredByType = true;
+    this.isFiltered = true;
     this.isLoading = true;
     this.pokemonService.getPokemonsByType(type).subscribe(async (pokemon) => {
-      this.pokemons = pokemon.filter(Boolean);
-      this.getBlankTypes();
+      this.pokemons = pokemon;
       this.isLoading = false;
     });
   }
 
-  async getReset(){
+  getReset(){
     this.nextUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=0%26limit=20';
     this.pokemons = [];
-    this.isFilteredByType = false;
+    this.isFiltered = false;
     this.getPokemons(this.nextUrl);
+  }
+
+  getPokemonsByFilter(event: any){
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      if(event.target.value && event.target.value !== ' '){
+        this.isFiltered = true;
+        this.isLoading = true;
+        this.pokemonService.getPokemonsByFilter(event.target.value).subscribe((pokemon) => {
+          this.pokemons = pokemon;
+          this.isLoading = false;
+        });
+      }
+    }, 500);
   }
 
   getPokemonById(id: number){
@@ -90,3 +89,21 @@ export class HomeComponent implements OnInit {
     });
   }
 }
+
+
+
+  //CASO USE ALGUM TIPO DE INTERAÇÃO DE COR COM OS TIPOS
+
+  // getBlankTypes(){
+  //   this.pokemons.map(pokemon => {
+  //     if(pokemon.types.length === 1) {
+  //       pokemon.types[1] = {
+  //         slot: 0,
+  //         type: {
+  //           name: 'blank',
+  //           url: '',
+  //         }
+  //       }
+  //     }
+  //   })
+  // }

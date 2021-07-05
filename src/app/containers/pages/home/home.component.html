@@ -2,11 +2,40 @@
   <app-header [selected]="'inicio'"></app-header>
   <div class="container">
     <div class="chip-container">
-      <mat-chip class="chip-types type--{{type}}" *ngFor="let type of types" (click)="getPokemonsByType(type)">{{type}}</mat-chip>
-      <mat-chip class="chip-types chip-types--blank type--blank" (click)="getReset()">Resetar Filtro</mat-chip>
-
+      <mat-chip
+        class="chip-types type--{{type}}"
+        *ngFor="let type of types"
+        (click)="getPokemonsByType(type)"
+        [disabled]="isLoading"
+      >
+        {{type}}
+      </mat-chip>
+      <mat-chip
+        class="chip-types chip-types--blank type--blank"
+        (click)="getReset()"
+        [disabled]="isLoading"
+      >
+        Reset Filter
+      </mat-chip>
     </div>
-    <app-loading class="loading" *ngIf="isLoading && isFilteredByType === true"></app-loading>
+    <div class="filters">
+      <input
+        class="name-filter"
+        type="text"
+        placeholder="Filter By Name"
+        (keyup)="getPokemonsByFilter($event)"
+        [disabled]="isLoading"
+      >
+      <input
+        class="name-filter"
+        type="text"
+        placeholder="Filter By ID"
+        (keyup)="getPokemonsByFilter($event)"
+        [disabled]="isLoading"
+      >
+    </div>
+
+    <app-loading class="loading" *ngIf="isLoading && isFiltered === true"></app-loading>
     <div class="content">
       <div class="pokemon type--{{pokemon.types[0].type.name}}" *ngFor="let pokemon of pokemons">
         <p class="pokemon-name">{{pokemon.name}}</p>
@@ -16,18 +45,18 @@
         <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span><span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>
         <div class="types">
           <div *ngFor="let type of pokemon.types; let index = index">
-            <p class="type type--{{pokemon.types[1].type.name}}" *ngIf="pokemon.types[index].type.name !== 'blank'">{{type.type.name}}</p>
+            <p class="type" *ngIf="pokemon.types[index].type.name !== 'blank'">{{type.type.name}}</p>
           </div>
         </div>
       </div>
     </div>
-    <app-loading class="loading" *ngIf="isLoading && isFilteredByType === false"></app-loading>
+    <app-loading class="loading" *ngIf="isLoading && isFiltered === false"></app-loading>
   </div>
   <app-footer></app-footer>
 </div>
 
 <div
-  *ngIf="!isLoading && nextUrl && isFilteredByType === false"
+  *ngIf="!isLoading && nextUrl && isFiltered === false"
   infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="50"

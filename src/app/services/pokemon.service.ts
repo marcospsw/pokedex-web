@@ -34,7 +34,15 @@ export class PokemonService {
   }
 
   getPokemonsByType(type: string): Observable<Pokemon[]> {
-    return this.httpClient.get<Pokemon[]>(environment.URL_SERVER + 'pokemons/complete?type=' + type)
+    return this.httpClient.get<Pokemon[]>(environment.URL_SERVER + 'pokemons/bytype?type=' + type)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  getPokemonsByFilter(search: string): Observable<Pokemon[]> {
+    return this.httpClient.get<Pokemon[]>(environment.URL_SERVER + 'pokemons/filter?search=' + search)
       .pipe(
         retry(2),
         catchError(this.handleError)
