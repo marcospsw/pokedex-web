@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
   ]
   public isFiltered: boolean = false;
   public timer: NodeJS.Timeout = setTimeout(() => {}, 0);
+  public filterName: string = '';
+  public filterId: string = '';
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -62,6 +64,8 @@ export class HomeComponent implements OnInit {
   }
 
   getReset(){
+    this.filterName = '';
+    this.filterId = '';
     this.nextUrl = 'https://pokeapi.co/api/v2/pokemon/?offset=0%26limit=20';
     this.pokemons = [];
     this.isFiltered = false;

@@ -10,24 +10,26 @@
       >
         {{type}}
       </mat-chip>
-      <mat-chip
-        class="chip-types chip-types--blank type--blank"
-        (click)="getReset()"
-        [disabled]="isLoading"
-      >
-        Reset Filter
-      </mat-chip>
     </div>
     <div class="filters">
       <input
-        class="name-filter"
+        class="filter"
+        [(ngModel)]="filterName"
         type="text"
         placeholder="Filter By Name"
         (keyup)="getPokemonsByFilter($event)"
         [disabled]="isLoading"
       >
+      <mat-chip
+        class="chip-types chip-types--blank type--blank"
+        (click)="getReset()"
+        [disabled]="isLoading"
+      >
+        Reset Filters
+      </mat-chip>
       <input
-        class="name-filter"
+        class="filter"
+        [(ngModel)]="filterId"
         type="text"
         placeholder="Filter By ID"
         (keyup)="getPokemonsByFilter($event)"
@@ -53,12 +55,11 @@
     <app-loading class="loading" *ngIf="isLoading && isFiltered === false"></app-loading>
   </div>
   <app-footer></app-footer>
-</div>
-
-<div
+  <div
   *ngIf="!isLoading && nextUrl && isFiltered === false"
   infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="50"
   (scrolled)="getPokemons(nextUrl)"
-></div>
+  ></div>
+</div>
