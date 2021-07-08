@@ -127,8 +127,7 @@
 .pokemon-img {
   height: 12rem;
   width: 12rem;
-  transition: filter 0.3s;
-  transition: transform 0.3s;
+  transition: filter 0.3s, transform 0.3s;
 }
 
 .pokemon-id {

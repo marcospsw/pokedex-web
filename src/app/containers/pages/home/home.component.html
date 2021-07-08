@@ -39,11 +39,11 @@
 
     <app-loading class="loading" *ngIf="isLoading && isFiltered === true"></app-loading>
     <div class="content">
-      <div class="pokemon type--{{pokemon.types[0].type.name}}" *ngFor="let pokemon of pokemons">
+      <div class="pokemon type--{{pokemon.types[0].type.name}}" *ngFor="let pokemon of pokemons" (click)="goToPokemon(pokemon.id)">
         <p class="pokemon-name">{{pokemon.name}}</p>
-        <a class="pokemon-bg" [href]="pokemon.url">
+        <div class="pokemon-bg">
           <img class="pokemon-img" [src]="pokemon.sprite" [alt]="pokemon.name" >
-        </a>
+        </div>
         <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span><span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>
         <div class="types">
           <div *ngFor="let type of pokemon.types; let index = index">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Pokemon, Pokemons, UniquePokemon } from 'src/app/models/pokemon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +39,10 @@ export class HomeComponent implements OnInit {
   public filterName: string = '';
   public filterId: string = '';
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.getPokemons(this.nextUrl);
@@ -49,7 +53,7 @@ export class HomeComponent implements OnInit {
     this.pokemonService.getPokemons(url).subscribe( async (pokemons: Pokemons) => {
       const nextLoadPokemons = this.pokemons.concat(pokemons.completePokemons);
       this.pokemons = nextLoadPokemons;
-      pokemons.next_url ? this.nextUrl = pokemons.next_url.replace('&', '%26') : this.nextUrl = pokemons.next_url;
+      this.nextUrl = pokemons.next_url ? pokemons.next_url.replace('&', '%26') : pokemons.next_url;
       this.isLoading = false;
     });
   }
@@ -86,11 +90,8 @@ export class HomeComponent implements OnInit {
     }, 500);
   }
 
-  getPokemonById(id: number){
-    this.pokemonService.getPokemonById(id).subscribe((pokemon: UniquePokemon) => {
-      this.pokemon = pokemon.name;
-      this.pokemonSvg = pokemon.sprite;
-    });
+  goToPokemon(id: number){
+    this.router.navigate(['pokemon', id]);
   }
 }
 
