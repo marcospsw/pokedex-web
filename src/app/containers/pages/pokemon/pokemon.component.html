@@ -37,7 +37,7 @@
         <div class="stats">
           <div class="stat" *ngFor="let stat of pokemon.stats">
             <mat-progress-bar class="stat-progress-bar" mode="determinate"  [value]="stat.base_stat"></mat-progress-bar>
-            <p class="stat-name">{{stat.stat.name}}</p>
+            <p class="stat-name">{{stat.stat.name}} ({{stat.base_stat}})</p>
           </div>
         </div>
       </div>
