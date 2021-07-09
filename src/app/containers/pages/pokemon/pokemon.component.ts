@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SpecificPokemon } from 'src/app/models/pokemon';
+import { Pokemon, SpecificPokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -11,7 +11,8 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonComponent implements OnInit {
   public pokemonId: number = 0;
   public isLoading: boolean = false;
-  public pokemon: any;
+  public pokemon: SpecificPokemon;
+  public pokemonEvolutions: Pokemon[];
 
 
   constructor(
@@ -24,7 +25,6 @@ export class PokemonComponent implements OnInit {
     this.activatedRoute.params.subscribe(param => {
       this.pokemonId = parseInt(param.id);
     });
-
     this.getPokemonById(this.pokemonId);
   }
 
@@ -32,13 +32,21 @@ export class PokemonComponent implements OnInit {
     this.isLoading = true;
     this.pokemonService.getPokemonById(id).subscribe((pokemon: SpecificPokemon) => {
       this.pokemon = pokemon;
+      this.pokemonEvolutions = [
+        this.pokemon.firstEvolution,
+        this.pokemon.secondEvolution,
+        this.pokemon.thirdEvolution
+      ].filter(Boolean);
       this.isLoading = false;
-      console.log(this.pokemon);
     });
   }
 
   goBack(){
     this.router.navigate(['']);
+  }
+
+  getNewPokemon(id: number){
+    console.log(id);
   }
 
 

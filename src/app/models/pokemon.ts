@@ -31,13 +31,28 @@ export interface SpecificPokemon {
   id: number;
   sprite: string;
   height: number;
-  types: PokemonTypes[];
+  types: Type[];
   stats: Stat[];
   firstEvolution: Pokemon;
   secondEvolution: Pokemon;
   thirdEvolution: Pokemon;
 }
 
+export interface Type {
+  name: string;
+  advantages: Advantage[];
+  weaknesses: Weaknes[];
+}
+
+export interface Advantage {
+  name: string;
+  url: string;
+}
+
+export interface Weaknes {
+  name: string;
+  url: string;
+}
 export interface Stat {
   base_stat: number;
   effort: number;

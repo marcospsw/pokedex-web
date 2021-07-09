@@ -15,7 +15,7 @@
         <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span><span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>
         <div class="pokemon-types">
           <div *ngFor="let type of pokemon.types; let index = index">
-            <p class="pokemon-type" *ngIf="pokemon.types[index].name !== 'blank'">{{type.name}}</p>
+            <p class="pokemon-type">{{type.name}}</p>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
           <div class="weaknesses">
             <p class="type-name">Weakness</p>
             <div class="types-weaknesses">
-              <span class="type-weakness type--{{type.name}}" *ngFor="let type of pokemon.types[0].weaknes">{{type.name}}</span>
+              <span class="type-weakness type--{{type.name}}" *ngFor="let type of pokemon.types[0].weaknesses">{{type.name}}</span>
             </div>
           </div>
         </div>
@@ -42,6 +42,13 @@
         </div>
       </div>
     </div>
+    <app-evolutions
+      class="evolutions"
+      [pokemons]="pokemonEvolutions"
+      *ngIf="!isLoading"
+      (newPokemon)="getPokemonById($event)"
+    >
+    </app-evolutions>
   </div>
 </div>
 <app-footer></app-footer>

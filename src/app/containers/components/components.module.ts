@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { EvolutionsComponent } from './evolutions/evolutions.component';
 
 
 
@@ -12,6 +13,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
+    EvolutionsComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
+    EvolutionsComponent,
   ]
 })
 export class ComponentsModule { }
