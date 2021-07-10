@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-import { Pokemon, Pokemons, SpecificPokemon, UniquePokemon } from '../models/pokemon';
+import { Pokemon, Pokemons, SpecificPokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root'

@@ -8,8 +8,8 @@ import { Router } from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
 	@Input() selected: string = '';
-	public inicio = false;
-	public sobreMim = false;
+	public pokemons = false;
+	public types = false;
 	public carreira = false;
 	public portifolio = false;
 	public contato = false;
@@ -23,11 +23,11 @@ export class HeaderComponent implements OnInit {
 
 	headerFocus(selected: string){
 		switch (selected) {
-			case 'inicio':
-				this.inicio = true;
+			case 'pokemons':
+				this.pokemons = true;
 			break;
-			case 'sobre-mim':
-				this.sobreMim = true;
+			case 'types':
+				this.types = true;
 			break;
 			case 'carreira':
 				this.carreira = true;

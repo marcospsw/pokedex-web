@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.getPokemons(this.nextUrl);
   }
 

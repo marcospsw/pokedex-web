@@ -1,0 +1,8 @@
+<app-header [selected]="'types'"></app-header>
+<div class="container">
+  <app-loading *ngIf="isLoading"></app-loading>
+  <span class="type type--{{type.name}}" *ngFor="let type of types">
+    {{type.name}}
+  </span>
+</div>
+<app-footer></app-footer>

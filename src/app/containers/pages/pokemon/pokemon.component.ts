@@ -21,7 +21,7 @@ export class PokemonComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.activatedRoute.params.subscribe(param => {
       this.pokemonId = parseInt(param.id);
     });
