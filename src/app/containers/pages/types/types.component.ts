@@ -9,6 +9,7 @@ import { TypesService } from 'src/app/services/types.service';
 })
 export class TypesComponent implements OnInit {
   public isLoading: Boolean = false;
+  public isTypeLoading: Boolean = false;
   public types: Type[];
   public specificType: SpecificType;
 
@@ -29,11 +30,19 @@ export class TypesComponent implements OnInit {
   }
 
   getSpecificType(id: number){
-    this.isLoading = true;
+    this.isTypeLoading = true;
     this.typesService.getSpecificType(id).subscribe((type: SpecificType) => {
       this.specificType = type;
-      this.isLoading = false;
+      this.isTypeLoading = false;
       console.log(this.specificType)
+    });
+  }
+
+  getNewSpecificType(name: string) {
+    this.isTypeLoading = true;
+    this.typesService.getTypes().subscribe((types: Type[]) => {
+      const newType = types.find(type => type.name === name)
+      newType && this.getSpecificType(newType.id);
     });
   }
 }

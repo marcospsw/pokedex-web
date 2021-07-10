@@ -1,8 +1,41 @@
 <app-header [selected]="'types'"></app-header>
 <div class="container">
   <app-loading *ngIf="isLoading"></app-loading>
-  <span class="type type--{{type.name}}" *ngFor="let type of types">
-    {{type.name}}
-  </span>
+  <div class="content">
+    <div class="types-box">
+      <span class="type type--{{type.name}}" *ngFor="let type of types" (click)="getSpecificType(type.id)">
+        {{type.name}}
+      </span>
+    </div>
+    <app-loading *ngIf="!specificType && isTypeLoading"></app-loading>
+    <div class="specific-type-box" *ngIf="specificType">
+      <app-loading *ngIf="isTypeLoading"></app-loading>
+      <span class="specific-type type--{{specificType.name}}" *ngIf="specificType && !isTypeLoading">
+        {{specificType.name}}
+      </span>
+      <div class="specific-arrows" *ngIf="specificType && !isTypeLoading">
+        <div class="specific-arrow type--{{specificType.name}}">
+          <span class="arrow-text type--{{specificType.name}}">ADVANTAGES</span>
+          <mat-icon class="arrow-icon type--{{specificType.name}}">arrow_forward_ios</mat-icon>
+        </div>
+        <div class="specific-arrow type--{{specificType.name}}">
+          <span class="arrow-text type--{{specificType.name}}">WEAKNESSES</span>
+          <mat-icon class="arrow-icon type--{{specificType.name}}">arrow_forward_ios</mat-icon>
+        </div>
+      </div>
+      <div class="specific-damages" *ngIf="specificType && !isTypeLoading">
+        <div class="specific-advantages">
+          <span class="type type--{{type.name}}" *ngFor="let type of specificType.advantages" (click)="getNewSpecificType(type.name)">
+            {{type.name}}
+          </span>
+        </div>
+        <div class="specific-weaknesses">
+          <span class="type type--{{type.name}}" *ngFor="let type of specificType.weaknesses" (click)="getNewSpecificType(type.name)">
+            {{type.name}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>
