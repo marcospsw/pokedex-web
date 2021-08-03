@@ -13,6 +13,9 @@
         "indent": ["error", 2],
         "no-tabs": "error",
         "object-shorthand": "error",
+        "linebreak-style": ["error", "windows"],
+        "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+        "max-len": ["error", { "code": 120, "ignoreUrls": true, "ignoreRegExpLiterals": true }],
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -32,9 +35,13 @@
       }
     },
     {
-      "files": ["*.html"],
+      "files": ["*.html", "*.scss"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
-      "rules": {}
+      "rules": {
+        "linebreak-style": ["error", "windows"],
+        "max-len": ["error", { "code": 120, "ignoreUrls": true, "ignoreRegExpLiterals": true }],
+        "no-tabs": "error"
+      }
     }
   ]
 }
