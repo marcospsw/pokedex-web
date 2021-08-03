@@ -8,25 +8,9 @@ import { EvolutionsComponent } from './evolutions/evolutions.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
-
-
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    LoadingComponent,
-    EvolutionsComponent,
-  ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    MatProgressSpinnerModule
-  ],
-  exports: [
-    HeaderComponent,
-    FooterComponent,
-    LoadingComponent,
-    EvolutionsComponent,
-  ]
+	declarations: [HeaderComponent, FooterComponent, LoadingComponent, EvolutionsComponent],
+	imports: [CommonModule, AppRoutingModule, MatProgressSpinnerModule],
+	exports: [HeaderComponent, FooterComponent, LoadingComponent, EvolutionsComponent],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

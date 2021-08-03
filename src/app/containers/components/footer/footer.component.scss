@@ -1,17 +1,17 @@
-@import "includes.scss";
+@import 'includes.scss';
 
-.footer-container{
+.footer-container {
 	height: 10vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	background: $gray-800;
-  width: 100%;
+	width: 100%;
 
-	a{
+	a {
 		font-weight: $font-semi-bold;
-    transition: color 0.3s;
-		&:hover{
+		transition: color 0.3s;
+		&:hover {
 			color: $green;
 		}
 	}

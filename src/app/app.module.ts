@@ -7,15 +7,8 @@ import { AppComponent } from './containers/pages/app/app.component';
 import { PagesModule } from './containers/pages/pages.module';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    PagesModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, PagesModule, BrowserAnimationsModule],
+	providers: [],
+	bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}

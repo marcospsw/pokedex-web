@@ -1,21 +1,26 @@
 <div class="root">
-  <div class="evolutions-box">
-    <p class="title">Evolutions</p>
-    <div class="pokemons-box">
-      <div class="pokemon type--{{pokemon.types[0].type.name}}" *ngFor="let pokemon of pokemons" (click)="getNewPokemon(pokemon.id)">
-        <p class="pokemon-name">{{pokemon.name}}</p>
-        <div class="pokemon-bg">
-          <img class="pokemon-img" [src]="pokemon.sprite" [alt]="pokemon.name" >
-        </div>
-        <p class="pokemon-id">#<span *ngIf="pokemon.id <= 9">00</span><span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span>{{pokemon.id}}</p>
-        <div class="types">
-          <div *ngFor="let type of pokemon.types; let index = index">
-            <p class="type">{{type.type.name}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="evolutions-box">
+		<p class="title">Evolutions</p>
+		<div class="pokemons-box">
+			<div
+				class="pokemon type--{{ pokemon.types[0].type.name }}"
+				*ngFor="let pokemon of pokemons"
+				(click)="getNewPokemon(pokemon.id)"
+			>
+				<p class="pokemon-name">{{ pokemon.name }}</p>
+				<div class="pokemon-bg">
+					<img class="pokemon-img" [src]="pokemon.sprite" [alt]="pokemon.name" />
+				</div>
+				<p class="pokemon-id">
+					#<span *ngIf="pokemon.id <= 9">00</span><span *ngIf="pokemon.id < 99 && pokemon.id >= 10">0</span
+					>{{ pokemon.id }}
+				</p>
+				<div class="types">
+					<div *ngFor="let type of pokemon.types; let index = index">
+						<p class="type">{{ type.type.name }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-

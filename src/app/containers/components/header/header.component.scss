@@ -1,4 +1,4 @@
-@import "includes.scss";
+@import 'includes.scss';
 
 .container {
 	background-color: $gray-800;
@@ -14,21 +14,21 @@
 	display: flex;
 	align-items: center;
 
-	&--logo{
+	&--logo {
 		width: 10vh;
 		border: 0.1rem solid #fff;
 		border-radius: 50%;
 		margin-right: 1rem;
-    box-shadow: 2px 2px #000000;
+		box-shadow: 2px 2px #000000;
 	}
 
 	&--name {
 		font-size: 2rem;
 		font-weight: $font-bold;
-		text-shadow:  2px 2px #000000;
-    transition: color 0.3s;
+		text-shadow: 2px 2px #000000;
+		transition: color 0.3s;
 
-		&:hover{
+		&:hover {
 			color: $green;
 		}
 	}
@@ -42,21 +42,19 @@
 		font-weight: $font-semi-bold;
 		padding: 0 1rem;
 		cursor: pointer;
-		text-shadow:  2px 2px #000000;
-    transition: color 0.3s;
+		text-shadow: 2px 2px #000000;
+		transition: color 0.3s;
 
 		&:hover {
 			color: $green;
 		}
 	}
 
-  .ativo{
-    color: $green;
-  }
+	.ativo {
+		color: $green;
+	}
 
 	button {
 		margin-left: 2rem;
 	}
 }
-
-

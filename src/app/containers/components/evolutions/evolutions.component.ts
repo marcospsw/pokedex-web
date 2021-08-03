@@ -3,23 +3,20 @@ import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon';
 
 @Component({
-  selector: 'app-evolutions',
-  templateUrl: './evolutions.component.html',
-  styleUrls: ['./evolutions.component.scss']
+	selector: 'app-evolutions',
+	templateUrl: './evolutions.component.html',
+	styleUrls: ['./evolutions.component.scss'],
 })
 export class EvolutionsComponent implements OnInit {
-  @Input() pokemons: Pokemon[];
-  @Output() newPokemon = new EventEmitter<number>();
+	@Input() pokemons: Pokemon[];
+	@Output() newPokemon = new EventEmitter<number>();
 
-  constructor(
-    private router: Router,
-  ) { }
+	constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {}
 
-  getNewPokemon(id: number) {
-    this.router.navigate(['pokemon', id]);
-    this.newPokemon.emit(id);
-  }
+	getNewPokemon(id: number) {
+		this.router.navigate(['pokemon', id]);
+		this.newPokemon.emit(id);
+	}
 }
