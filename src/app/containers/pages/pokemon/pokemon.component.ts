@@ -41,10 +41,6 @@ export class PokemonComponent implements OnInit {
     });
   }
 
-  goBack(){
-    this.router.navigate(['']);
-  }
-
   getNewPokemon(id: number){
     console.log(id);
   }

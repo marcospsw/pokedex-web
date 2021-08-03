@@ -5,8 +5,9 @@ import { PokemonComponent } from './containers/pages/pokemon/pokemon.component';
 import { TypesComponent } from './containers/pages/types/types.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
   {
-		path: '',
+		path: 'pokemons',
 		component: HomeComponent,
 	},
   {

@@ -48,13 +48,15 @@
 		&:hover {
 			color: $green;
 		}
-
-		&.focused{
-			color: $green;
-		}
 	}
+
+  .ativo{
+    color: $green;
+  }
 
 	button {
 		margin-left: 2rem;
 	}
 }
+
+

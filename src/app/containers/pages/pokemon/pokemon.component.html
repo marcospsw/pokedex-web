@@ -1,7 +1,7 @@
-<app-header [selected]="'pokemons'"></app-header>
+<app-header></app-header>
 <div class="root">
   <div class="container">
-    <mat-chip class="back-button" (click)="goBack()" *ngIf="!isLoading">
+    <mat-chip class="back-button" routerLink="/pokemons" *ngIf="!isLoading">
       <mat-icon class="back-button-icon-home">home</mat-icon>
       <mat-icon class="back-button-icon">arrow_back</mat-icon>
     </mat-chip>

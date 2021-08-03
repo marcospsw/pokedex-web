@@ -5,6 +5,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EvolutionsComponent } from './evolutions/evolutions.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -17,6 +19,7 @@ import { EvolutionsComponent } from './evolutions/evolutions.component';
   ],
   imports: [
     CommonModule,
+    AppRoutingModule,
     MatProgressSpinnerModule
   ],
   exports: [

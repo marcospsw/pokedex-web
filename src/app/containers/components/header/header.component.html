@@ -5,11 +5,11 @@
 	</a>
 	<nav>
 		<ul class="menu">
-			<li [class.focused]="pokemons" (click)="clickToGo('')">Pokemons</li>
-			<li [class.focused]="types" (click)="clickToGo('types')">Types</li>
-			<li [class.focused]="carreira" (click)="clickToGo('carreira')">Locates</li>
-			<li [class.focused]="portifolio" (click)="clickToGo('portifolio')">Games</li>
-			<li [class.focused]="contato" (click)="clickToGo('contato')">History</li>
+			<li routerLink="/pokemons" routerLinkActive="ativo">Pokemons</li>
+			<li routerLink="/types" routerLinkActive="ativo">Types</li>
+			<li>Locates</li>
+			<li>Games</li>
+			<li>History</li>
 		</ul>
 	</nav>
 </div>
