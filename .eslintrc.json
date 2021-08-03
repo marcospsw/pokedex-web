@@ -8,11 +8,11 @@
         "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
-      "extends": [
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
+      "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
       "rules": {
+        "indent": ["error", 2],
+        "no-tabs": "error",
+        "object-shorthand": "error",
         "@angular-eslint/directive-selector": [
           "error",
           {

@@ -8,8 +8,8 @@ import { EvolutionsComponent } from './evolutions/evolutions.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @NgModule({
-	declarations: [HeaderComponent, FooterComponent, LoadingComponent, EvolutionsComponent],
-	imports: [CommonModule, AppRoutingModule, MatProgressSpinnerModule],
-	exports: [HeaderComponent, FooterComponent, LoadingComponent, EvolutionsComponent],
+  declarations: [HeaderComponent, FooterComponent, LoadingComponent, EvolutionsComponent],
+  imports: [CommonModule, AppRoutingModule, MatProgressSpinnerModule],
+  exports: [HeaderComponent, FooterComponent, LoadingComponent, EvolutionsComponent],
 })
 export class ComponentsModule {}

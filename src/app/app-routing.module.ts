@@ -5,23 +5,23 @@ import { PokemonComponent } from './containers/pages/pokemon/pokemon.component';
 import { TypesComponent } from './containers/pages/types/types.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: 'pokemons', pathMatch: 'full' },
-	{
-		path: 'pokemons',
-		component: HomeComponent,
-	},
-	{
-		path: 'pokemon/:id',
-		component: PokemonComponent,
-	},
-	{
-		path: 'types',
-		component: TypesComponent,
-	},
+  { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
+  {
+    path: 'pokemons',
+    component: HomeComponent,
+  },
+  {
+    path: 'pokemon/:id',
+    component: PokemonComponent,
+  },
+  {
+    path: 'types',
+    component: TypesComponent,
+  },
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

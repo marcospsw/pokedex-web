@@ -2,8 +2,8 @@
 @import 'includes.scss';
 
 body {
-	background: $black;
-	color: $gray-100;
+  background: $black;
+  color: $gray-100;
 }
 
 body,
@@ -11,23 +11,23 @@ input,
 textarea,
 select,
 button {
-	font: $font-regular 1rem $font, sans-serif;
+  font: $font-regular 1rem $font, sans-serif;
 }
 
 input {
-	outline-offset: 0px !important;
-	outline: none !important;
+  outline-offset: 0px !important;
+  outline: none !important;
 }
 
 button {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 li {
-	list-style: none;
+  list-style: none;
 }

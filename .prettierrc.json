@@ -2,9 +2,10 @@
 	"tabWidth": 2,
 	"singleQuote": true,
 	"printWidth": 120,
-	"useTabs": true,
 	"semi": true,
+	"useTabs": false,
 	"bracketSpacing": true,
 	"arrowParens": "always",
-	"endOfLine": "crlf"
+	"endOfLine": "crlf",
+	"eslintIntegration": true
 }

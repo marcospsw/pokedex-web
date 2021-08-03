@@ -14,19 +14,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TypesComponent } from './types/types.component';
 
 @NgModule({
-	declarations: [HomeComponent, AppComponent, PokemonComponent, TypesComponent],
-	imports: [
-		CommonModule,
-		ComponentsModule,
-		AppRoutingModule,
-		MatIconModule,
-		InfiniteScrollModule,
-		MatChipsModule,
-		FormsModule,
-		ReactiveFormsModule,
-		MatProgressSpinnerModule,
-		MatProgressBarModule,
-	],
-	exports: [],
+  declarations: [HomeComponent, AppComponent, PokemonComponent, TypesComponent],
+  imports: [
+    CommonModule,
+    ComponentsModule,
+    AppRoutingModule,
+    MatIconModule,
+    InfiniteScrollModule,
+    MatChipsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+  ],
+  exports: [],
 })
 export class PagesModule {}
