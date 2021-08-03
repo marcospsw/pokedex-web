@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon';
 
@@ -7,13 +7,11 @@ import { Pokemon } from 'src/app/models/pokemon';
 	templateUrl: './evolutions.component.html',
 	styleUrls: ['./evolutions.component.scss'],
 })
-export class EvolutionsComponent implements OnInit {
+export class EvolutionsComponent {
 	@Input() pokemons: Pokemon[];
 	@Output() newPokemon = new EventEmitter<number>();
 
 	constructor(private router: Router) {}
-
-	ngOnInit(): void {}
 
 	getNewPokemon(id: number) {
 		this.router.navigate(['pokemon', id]);
