@@ -1,0 +1,61 @@
+<div class="container">
+  <h1 class="title-container">Registre-se</h1>
+
+  <div class="content">
+    <form class="login-form" [formGroup]="newUserForm" (submit)="register()">
+      <div class="input-box">
+        <input type="text" placeholder="E-mail" class="input-field" formControlName="email" name="email" />
+        <app-form-error
+          *ngIf="newUserForm.get('email')?.errors?.required && newUserForm.get('email')?.touched"
+          mensagem="E-mail obrigatório!"
+        ></app-form-error>
+        <app-form-error
+          *ngIf="newUserForm.get('email')?.errors?.email && newUserForm.get('email')?.touched"
+          mensagem="E-mail invalido!"
+        ></app-form-error>
+        <app-form-error
+          *ngIf="newUserForm.get('email')?.errors?.usuarioExistente"
+          mensagem="Usuario ja existente!"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input type="text" placeholder="Nome" class="input-field" formControlName="name" name="name" />
+        <app-form-error
+          *ngIf="newUserForm.get('name')?.errors?.required && newUserForm.get('name')?.touched"
+          mensagem="Nome obrigatório!"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input type="text" placeholder="Avatar URL" class="input-field" formControlName="avatar" name="avatar" />
+        <app-form-error
+          *ngIf="newUserForm.get('avatar')?.errors?.required && newUserForm.get('avatar')?.touched"
+          mensagem="Avatar Obrigatório"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input type="password" placeholder="Senha" class="input-field" formControlName="password" name="password" />
+        <app-form-error
+          *ngIf="newUserForm.get('password')?.errors?.required && newUserForm.get('password')?.touched"
+          mensagem="Senha obrigatória!"
+        ></app-form-error>
+      </div>
+
+      <div class="submit-box">
+        <button class="submit-button" type="submit" [disabled]="newUserForm.invalid">Registre-se</button>
+      </div>
+    </form>
+
+    <div class="users-container">
+      <p class="users-title">Usuários Cadastrados</p>
+      <div class="user" *ngFor="let user of users">
+        <p class="user-info">{{ user.name }}</p>
+        <p class="user-info">{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="login-text">Já é um usuário? <a class="login-span" [routerLink]="['/login']">Faça o login</a></p>
+</div>

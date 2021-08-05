@@ -1,0 +1,92 @@
+@import 'includes.scss';
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  height: 78vh;
+}
+
+.title-container {
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-box {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+.input-field {
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  border: 2px solid transparent;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+
+  &:focus {
+    border-color: $green;
+    background-color: #e5fdf0;
+  }
+
+  &:-webkit-autofill {
+    background-color: #e5fdf0;
+  }
+}
+
+.submit-box {
+  margin: 1rem;
+}
+
+.submit-button {
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  border: none;
+  background-color: $green;
+  color: $black;
+  font-size: 1.2rem;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  &:disabled {
+    filter: brightness(0.3);
+    cursor: initial;
+  }
+}
+
+.login-text {
+  font-style: italic;
+  font-size: 1.5rem;
+  margin: 3rem 0;
+}
+
+.login-span {
+  margin: 1rem;
+  padding: 1rem 2rem;
+  background-color: $green;
+  border-radius: 10px;
+  color: $black;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}

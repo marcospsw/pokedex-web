@@ -1,0 +1,9 @@
+@import 'includes.scss';
+
+.form-error {
+  color: rgb(231, 74, 74);
+  font-size: 1.2rem;
+  font-weight: $font-semi-bold;
+  font-style: italic;
+  letter-spacing: 0.1rem;
+}

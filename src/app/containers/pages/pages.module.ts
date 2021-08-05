@@ -12,9 +12,11 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TypesComponent } from './types/types.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [HomeComponent, AppComponent, PokemonComponent, TypesComponent],
+  declarations: [HomeComponent, AppComponent, PokemonComponent, TypesComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     ComponentsModule,

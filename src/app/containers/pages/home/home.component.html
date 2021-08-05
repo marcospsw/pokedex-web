@@ -1,5 +1,4 @@
 <div class="root">
-  <app-header></app-header>
   <div class="container">
     <div class="chip-container">
       <mat-chip
@@ -57,7 +56,6 @@
     </div>
     <app-loading class="loading" *ngIf="isLoading && isFiltered === false"></app-loading>
   </div>
-  <app-footer></app-footer>
   <div
     *ngIf="!isLoading && nextUrl && isFiltered === false"
     infiniteScroll

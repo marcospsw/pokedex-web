@@ -35,8 +35,4 @@ export class PokemonComponent implements OnInit {
       this.isLoading = false;
     });
   }
-
-  getNewPokemon(id: number) {
-    console.log(id);
-  }
 }

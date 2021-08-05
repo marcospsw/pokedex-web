@@ -9,7 +9,19 @@
       <li routerLink="/types" routerLinkActive="ativo">Types</li>
       <li>Locates</li>
       <li>Games</li>
-      <li>History</li>
+      <div *ngIf="user$ | async as user">
+        <div *ngIf="user.name; else login" class="login">
+          <li (click)="logout()" class="ativo">Logout</li>
+          <img class="avatar" [src]="user.avatar ? user.avatar : 'assets/img/avatar.jpg'" alt="Profile photo" />
+        </div>
+      </div>
     </ul>
   </nav>
 </div>
+
+<ng-template #login>
+  <div class="login" #login>
+    <li routerLink="/login" routerLinkActive="ativo">Login</li>
+    <img class="avatar" src="assets/img/avatar.jpg" alt="Profile photo" />
+  </div>
+</ng-template>
