@@ -41,6 +41,31 @@
           *ngIf="newUserForm.get('password')?.errors?.required && newUserForm.get('password')?.touched"
           mensagem="Senha obrigatória!"
         ></app-form-error>
+        <app-form-error
+          *ngIf="newUserForm.get('password')?.errors?.minlength?.requiredLength && newUserForm.get('password')?.touched"
+          mensagem="Mínimo de 8 caracteres!"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          placeholder="Confirme sua senha"
+          class="input-field"
+          formControlName="passwordConfirmation"
+          name="passwordConfirmation"
+        />
+        <app-form-error
+          *ngIf="
+            newUserForm.get('passwordConfirmation')?.errors?.required &&
+            newUserForm.get('passwordConfirmation')?.touched
+          "
+          mensagem="Confirmação de senha obrigatória!"
+        ></app-form-error>
+        <app-form-error
+          *ngIf="newUserForm.errors?.passwordConfirmation && newUserForm.get('passwordConfirmation')?.touched"
+          mensagem="Senhas devem ser iguais!"
+        ></app-form-error>
       </div>
 
       <div class="submit-box">

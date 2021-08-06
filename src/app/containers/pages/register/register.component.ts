@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { first, map, switchMap } from 'rxjs/operators';
 import { NewUser, User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { passwordConfirmationRegisterValidator } from './password-confimation-register.validator';
 
 @Component({
   selector: 'app-register',
@@ -17,12 +18,18 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.newUserForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email], [this.verifyUser()]],
-      name: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      avatar: ['', [Validators.required]],
-    });
+    this.newUserForm = this.formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email], [this.verifyUser()]],
+        name: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        passwordConfirmation: ['', [Validators.required]],
+        avatar: [''],
+      },
+      {
+        validators: passwordConfirmationRegisterValidator,
+      }
+    );
     this.getUsers();
   }
 
@@ -39,6 +46,9 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.newUserForm.valid) {
       const newUser = this.newUserForm.getRawValue() as NewUser;
+      if (newUser.avatar === '') {
+        newUser.avatar = undefined;
+      }
 
       this.userService.registerNewUser(newUser).subscribe(
         () => {
@@ -54,7 +64,6 @@ export class RegisterComponent implements OnInit {
   getUsers() {
     this.userService.getUsers().subscribe((res: any) => {
       this.users = res.usersArray;
-      console.log(this.users);
     });
   }
 }

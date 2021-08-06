@@ -49,6 +49,14 @@
     background-color: #e5fdf0;
   }
 
+  &--readonly {
+    background-color: #757575;
+    &:focus {
+      border-color: transparent;
+      background-color: #757575;
+    }
+  }
+
   &:-webkit-autofill {
     background-color: #e5fdf0;
   }

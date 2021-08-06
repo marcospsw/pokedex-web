@@ -1,18 +1,32 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { NewUser } from '../models/user';
+import { EditUser, NewUser } from '../models/user';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private tokenService: TokenService) {}
+
+  public httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${this.tokenService.returnToken()}`,
+    }),
+  };
 
   registerNewUser(newUser: NewUser) {
     return this.httpClient.post(environment.URL_SERVER + 'user', newUser).pipe(retry(2), catchError(this.handleError));
+  }
+
+  editUser(editUser: EditUser) {
+    return this.httpClient
+      .post(environment.URL_SERVER + 'user/edit', editUser, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   verifyUserExists(userEmail: string): Observable<any> {

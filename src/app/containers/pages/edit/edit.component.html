@@ -1,0 +1,120 @@
+<div class="container">
+  <h1 class="title-container">Atualize seu cadastro</h1>
+
+  <div class="content">
+    <form class="login-form" [formGroup]="editUserForm" autocomplete="off" (submit)="editUser()">
+      <div class="input-box">
+        <input
+          type="text"
+          placeholder="ID"
+          class="input-field input-field--readonly"
+          formControlName="id"
+          name="id"
+          readonly
+        />
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="E-mail" class="input-field" formControlName="email" name="email" />
+        <app-form-error
+          *ngIf="editUserForm.get('email')?.errors?.required && editUserForm.get('email')?.touched"
+          mensagem="E-mail obrigatório!"
+        ></app-form-error>
+        <app-form-error
+          *ngIf="editUserForm.get('email')?.errors?.email && editUserForm.get('email')?.touched"
+          mensagem="E-mail invalido!"
+        ></app-form-error>
+        <app-form-error
+          *ngIf="editUserForm.get('email')?.errors?.usuarioExistente"
+          mensagem="E-mail ja registrado!"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input type="text" placeholder="Nome" class="input-field" formControlName="name" name="name" />
+        <app-form-error
+          *ngIf="editUserForm.get('name')?.errors?.required && editUserForm.get('name')?.touched"
+          mensagem="Nome obrigatório!"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input type="text" placeholder="Avatar URL" class="input-field" formControlName="avatar" name="avatar" />
+        <app-form-error
+          *ngIf="editUserForm.get('avatar')?.errors?.required && editUserForm.get('avatar')?.touched"
+          mensagem="Avatar Obrigatório"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          placeholder="Senha antiga"
+          class="input-field"
+          formControlName="oldPassword"
+          name="oldPassword"
+        />
+        <app-form-error
+          *ngIf="editUserForm.get('oldPassword')?.errors?.required && editUserForm.get('oldPassword')?.touched"
+          mensagem="Senha antiga é obrigatória!"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          placeholder="Nova senha"
+          class="input-field"
+          formControlName="newPassword"
+          name="newPassword"
+        />
+        <app-form-error
+          *ngIf="editUserForm.get('newPassword')?.errors?.required && editUserForm.get('newPassword')?.touched"
+          mensagem="Nova senha é obrigatória!"
+        ></app-form-error>
+        <app-form-error
+          *ngIf="
+            editUserForm.get('newPassword')?.errors?.minlength?.requiredLength &&
+            editUserForm.get('newPassword')?.touched
+          "
+          mensagem="Nova senha deve conter no mínimo de 8 caracteres!"
+        ></app-form-error>
+      </div>
+
+      <div class="input-box">
+        <input
+          type="password"
+          placeholder="Confirme sua senha"
+          class="input-field"
+          formControlName="newPasswordConfirmation"
+          name="newPasswordConfirmation"
+        />
+        <app-form-error
+          *ngIf="
+            editUserForm.get('newPasswordConfirmation')?.errors?.required &&
+            editUserForm.get('newPasswordConfirmation')?.touched
+          "
+          mensagem="Confirmação de nova senha obrigatória!"
+        ></app-form-error>
+        <app-form-error
+          *ngIf="editUserForm.errors?.passwordConfirmation && editUserForm.get('newPasswordConfirmation')?.touched"
+          mensagem="Senhas novas devem ser iguais!"
+        ></app-form-error>
+      </div>
+
+      <div class="submit-box">
+        <button class="submit-button" type="submit" [disabled]="editUserForm.invalid">Atualizar Cadastro</button>
+      </div>
+      <button (click)="getForm()">GET FORM</button>
+    </form>
+
+    <div class="users-container">
+      <p class="users-title">Usuários Cadastrados</p>
+      <div class="user" *ngFor="let user of users">
+        <p class="user-info">{{ user.name }}</p>
+        <p class="user-info">{{ user.email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="login-text">Já é um usuário? <a class="login-span" [routerLink]="['/login']">Faça o login</a></p>
+</div>

@@ -12,7 +12,12 @@
       <div *ngIf="user$ | async as user">
         <div *ngIf="user.name; else login" class="login">
           <li (click)="logout()" class="ativo">Logout</li>
-          <img class="avatar" [src]="user.avatar ? user.avatar : 'assets/img/avatar.jpg'" alt="Profile photo" />
+          <img
+            class="avatar avatar--login"
+            [src]="user.avatar ? user.avatar : 'assets/img/avatar.jpg'"
+            alt="Profile photo"
+            routerLink="/edit"
+          />
         </div>
       </div>
     </ul>

@@ -42,7 +42,7 @@ export class AuthenticateService {
       );
   }
 
-  private decodeJWT() {
+  decodeJWT() {
     const token = this.tokenService.returnToken();
     const user = jwt_decode(token) as User;
     this.userSubject.next(user);
@@ -64,5 +64,11 @@ export class AuthenticateService {
 
   isLogged() {
     return this.tokenService.haveToken();
+  }
+
+  returnUserObject() {
+    const token = this.tokenService.returnToken();
+    const user = jwt_decode(token) as User;
+    return user;
   }
 }

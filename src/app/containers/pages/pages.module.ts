@@ -14,9 +14,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TypesComponent } from './types/types.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
-  declarations: [HomeComponent, AppComponent, PokemonComponent, TypesComponent, LoginComponent, RegisterComponent],
+  declarations: [HomeComponent, AppComponent, PokemonComponent, TypesComponent, LoginComponent, RegisterComponent, EditComponent],
   imports: [
     CommonModule,
     ComponentsModule,
